@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="auth">
+  <form class="form-card wide" method="post">
+    <h1>Select Cabin</h1>
+    <p>{{ flight.from }} to {{ flight.to }} · {{ flight.date }} · {{ flight.depart }}</p>
+    <label class="choice"><input type="radio" name="travel_class" value="economy" checked> Economy · Rs {{ "{:,}".format(flight.economy) }}</label>
+    <label class="choice"><input type="radio" name="travel_class" value="business"> Business · Rs {{ "{:,}".format(flight.business) }}</label>
+    <button class="button primary" type="submit">Continue</button>
+  </form>
+</section>
+{% endblock %}

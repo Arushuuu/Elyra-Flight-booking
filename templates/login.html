@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="auth">
+  <form class="form-card" method="post">
+    <h1>Login</h1>
+    {% if error %}<p class="error">{{ error }}</p>{% endif %}
+    <label>Email<input name="email" type="email" required></label>
+    <label>Password<input name="password" type="password" required></label>
+    <button class="button primary" type="submit">Login</button>
+    <p>New to Elyra? <a href="{{ url_for('signup') }}">Sign up</a></p>
+  </form>
+</section>
+{% endblock %}

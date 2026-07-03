@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="auth">
+  <form class="form-card wide" method="post">
+    <h1>Passenger Details</h1>
+    <p>{{ flight.from }} to {{ flight.to }} · {{ travel_class.title() }} · Rs {{ "{:,}".format(price) }}</p>
+    <label>Full Name<input name="name" required></label>
+    <label>Email<input name="email" type="email" required></label>
+    <label>Phone<input name="phone" required></label>
+    <label>Card Number<input name="card" placeholder="Demo payment only" required></label>
+    <button class="button primary" type="submit">Pay and Book</button>
+  </form>
+</section>
+{% endblock %}

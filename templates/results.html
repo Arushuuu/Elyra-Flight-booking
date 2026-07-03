@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="results">
+  <h1>Available Flights</h1>
+  <p>{{ origin }} to {{ destination }} · {{ travel_date }} · {{ trip_type.replace('-', ' ').title() }}</p>
+  <div class="flight-list">
+    {% for flight in flights %}
+    <article class="flight-card">
+      <div><strong>{{ flight.airline }}</strong><span>{{ flight.type }}</span></div>
+      <div><strong>{{ flight.from }} → {{ flight.to }}</strong><span>{{ flight.date }}</span></div>
+      <div><strong>{{ flight.depart }}</strong><span>Depart</span></div>
+      <div><strong>{{ flight.arrive }}</strong><span>Arrive</span></div>
+      <div><strong>Rs {{ "{:,}".format(flight.economy) }}</strong><span>Economy from</span></div>
+      <a class="button primary" href="{{ url_for('select_class', flight_id=flight._id) }}">Select</a>
+    </article>
+    {% else %}
+    <p class="empty">No exact demo flights found. Try Delhi to Dubai, Delhi to Mumbai, Mumbai to Goa, or Chennai to Singapore.</p>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

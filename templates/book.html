@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="booking-shell">
+  <form class="search-box" action="{{ url_for('results') }}">
+    <h1>Book Your Flight</h1>
+    <div class="trip-toggle">
+      <label><input type="radio" name="trip_type" value="one-way" checked> One way</label>
+      <label><input type="radio" name="trip_type" value="round-trip"> Round trip</label>
+    </div>
+    <div class="grid-form">
+      <label>From
+        <select name="from" required>
+          {% for city in cities %}<option>{{ city }}</option>{% endfor %}
+        </select>
+      </label>
+      <label>To
+        <select name="to" required>
+          {% for city in cities %}<option>{{ city }}</option>{% endfor %}
+        </select>
+      </label>
+      <label>Departure Date<input name="date" type="date" required></label>
+      <label>Return Date<input name="return_date" type="date"></label>
+    </div>
+    <button class="button primary" type="submit">Search Flights</button>
+  </form>
+</section>
+{% endblock %}

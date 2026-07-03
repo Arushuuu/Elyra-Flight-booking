@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="confirmation">
+  <div class="form-card wide">
+    <p class="eyebrow">Booking confirmed</p>
+    <h1>Thank you, {{ booking.name }}</h1>
+    <p>Your Elyra {{ booking.travel_class }} seat from {{ booking.flight.from }} to {{ booking.flight.to }} is booked.</p>
+    <strong>Total Paid: Rs {{ "{:,}".format(booking.price) }}</strong>
+    <a class="button primary" href="{{ url_for('home') }}">Back Home</a>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero">
+  <div class="hero-copy">
+    <p class="eyebrow">Premium Indian airline experience</p>
+    <h1>Elyra</h1>
+    <p>Fly domestic and international routes from India with warm service, thoughtful comfort, and fares designed to feel reasonable.</p>
+    <div class="hero-actions">
+      <a class="button primary" href="{{ url_for('book') }}">Book Flights</a>
+      <a class="button ghost" href="{{ url_for('signup') }}">Create Account</a>
+    </div>
+  </div>
+  <aside class="hero-panel">
+    <span>Featured Route</span>
+    <strong>Delhi to Dubai</strong>
+    <p>Economy from Rs 21,999</p>
+  </aside>
+</section>
+
+<section class="features">
+  <article><h3>Domestic Reach</h3><p>Popular routes across Delhi, Mumbai, Bengaluru, Chennai, Goa, and Kolkata.</p></article>
+  <article><h3>International Comfort</h3><p>Comfortable flights to Singapore, Dubai, and London with economy and business choices.</p></article>
+  <article><h3>Reasonable Premium</h3><p>Clean booking, transparent prices, and cabin options that match your trip.</p></article>
+</section>
+
+<section class="routes">
+  <h2>Featured Fares</h2>
+  <div class="route-grid">
+    {% for flight in featured_flights %}
+    <article>
+      <span>{{ flight.type }}</span>
+      <strong>{{ flight.from }} to {{ flight.to }}</strong>
+      <p>{{ flight.date }} · {{ flight.depart }}</p>
+      <b>Rs {{ "{:,}".format(flight.economy) }}</b>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+
+<aside class="chatbot">
+  <div class="chat-head">
+    <strong>Elyra Assistant</strong>
+    <span>Powered by Ollama Gemma</span>
+  </div>
+  <div id="chatMessages" class="chat-messages">
+    <p class="bot">Hi, I can help with Elyra flights, prices, and availability.</p>
+  </div>
+  <form id="chatForm" class="chat-form">
+    <input id="chatInput" type="text" placeholder="Delhi to Dubai price?" autocomplete="off">
+    <button type="submit">Send</button>
+  </form>
+</aside>
+{% endblock %}
